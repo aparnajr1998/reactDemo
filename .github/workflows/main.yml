@@ -32,6 +32,9 @@ jobs:
         name: Build & push Docker image
         with:
           image: demo1456/react-app
+          tags: v1, latest
+          registry: registry-url.io
+          dockerfile: Dockerfile.ci
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 #       -
