@@ -29,11 +29,11 @@ jobs:
       - run: npm test 
       - run: npm run build 
       
-      
+
 
       # Runs a single command using the runners shell
       - name: Build and push Docker images
-        uses: docker/build-push-action@v3.0.0
+        uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: demo1456/react-app
           registry: docker.io
