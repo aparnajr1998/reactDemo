@@ -1,5 +1,8 @@
 name: learn-github-actions
-on: [push]
+# on: [push]
+on:
+  workflow_run:
+    workflows: ["Build"]
 # on:
 #   label:
 #     types:
