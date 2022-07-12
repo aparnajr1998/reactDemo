@@ -3,6 +3,8 @@ name: learn-github-actions
 on:
   workflow_run:
     workflows: ["main"]
+    branches:
+      - 'aparnajr1998-patch-1'
 # on:
 #   label:
 #     types:
