@@ -1,15 +1,15 @@
 name: learn-github-actions
-# on: [push]
-on:
-  label:
-    types:
-      - created
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+ on: [push]
+# on:
+#   label:
+#     types:
+#       - created
+#   push:
+#     branches:
+#       - master
+#   pull_request:
+#     branches:
+#       - master
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
