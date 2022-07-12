@@ -2,17 +2,17 @@ name: learn-github-actions
 # on: [push]
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["main"]
 # on:
 #   label:
 #     types:
 #       - created
-#   push:
-#     branches:
-#       - master
-#   pull_request:
-#     branches:
-#       - master
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
