@@ -1,11 +1,11 @@
 name: learn-github-actions
-on:
-  workflow_run:
-    workflows: ["main"]
-    types: [requested]
-    branches:
-      - 'branch1'
-
+# on:
+#   workflow_run:
+#     workflows: ["main"]
+#     types: [requested]
+#     branches:
+#       - 'branch1'
+on: [push]
 # on:
 #   label:
 #     types:
@@ -41,6 +41,13 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
+    print_context:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
 
   
 
