@@ -1,10 +1,4 @@
 name: learn-github-actions
-# on:
-#   workflow_run:
-#     workflows: ["main"]
-#     types: [requested]
-#     branches:
-#       - 'branch1'
 on: [push]
 # on:
 #   label:
