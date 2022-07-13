@@ -3,14 +3,23 @@ name: learn-github-actions
 on:
   issues:
     types:
-      - created
+      - closed
+  pull_request:
+    types:
+      - closed
 
 jobs:
-  run_if_label_matches:
-    if: github.event.label.name == 'bug'
+  state_event_type:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'The label was bug'
+    - name: if_issue
+      if: github.event.issue
+      run: |
+        echo An issue was closed
+    - name: if_pr
+      if: github.event.pull_request
+      run: |
+        echo A pull request was closed
 # on:
 #   label:
 #     types:
