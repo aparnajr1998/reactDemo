@@ -1,5 +1,11 @@
 name: learn-github-actions
-on: [push]
+# on: [push]
+on:
+  workflow_run:
+    workflows: ["main"]
+    types: [requested]
+    branches:
+      - 'aparnajr1998-patch-1'
 # on:
 #   label:
 #     types:
