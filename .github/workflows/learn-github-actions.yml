@@ -5,7 +5,7 @@ on:
     workflows: ["main"]
     types: [requested]
     branches:
-      - 'branch2'
+      - 'master'
 # on:
 #   label:
 #     types:
