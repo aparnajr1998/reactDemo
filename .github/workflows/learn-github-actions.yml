@@ -5,7 +5,7 @@ on:
     workflows: ["main"]
     types: [requested]
     branches:
-      - 'aparnajr1998-patch-1'
+      - 'branch2'
 # on:
 #   label:
 #     types:
