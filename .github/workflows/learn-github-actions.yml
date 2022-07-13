@@ -3,7 +3,7 @@ name: learn-github-actions
 on:
   issues:
     types:
-      - labeled
+      - created
 
 jobs:
   run_if_label_matches:
