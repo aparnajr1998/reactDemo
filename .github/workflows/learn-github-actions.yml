@@ -35,7 +35,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
-    print_context:
+  print_context:
     runs-on: ubuntu-latest
     steps:
       - env:
