@@ -63,6 +63,10 @@ jobs:
         with:
           name: code-coverage-report
           path: output/test/code-coverage.html
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+         name: my-artifact  
         
 #       -
 #         name: Set up QEMU
