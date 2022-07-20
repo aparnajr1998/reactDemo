@@ -25,8 +25,29 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm install  
-      - run: npm test 
+
+      - name: Cache node modules
+        id: cache-npm
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit == 'false' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list
+
+      - name: Install dependencies
+        run: npm install  
+      - run: npm test
       - run: npm run build 
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
@@ -36,6 +57,17 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+         name: code-coverage-report 
+        
 #       -
 #         name: Set up QEMU
 #         uses: docker/setup-qemu-action@v2
@@ -54,7 +86,7 @@ jobs:
 #         with:
 #           push: true
 #           tags: user/app:latest
-
+ 
 
      
 
