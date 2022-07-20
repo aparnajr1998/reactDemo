@@ -57,6 +57,13 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      -
+        name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
+        
 #       -
 #         name: Set up QEMU
 #         uses: docker/setup-qemu-action@v2
@@ -75,7 +82,7 @@ jobs:
 #         with:
 #           push: true
 #           tags: user/app:latest
-
+ 
 
      
 
